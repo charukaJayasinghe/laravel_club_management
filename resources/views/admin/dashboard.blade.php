@@ -89,3 +89,7 @@
     </div>
 </div>
 @endsection
+
+@section('csrf')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection

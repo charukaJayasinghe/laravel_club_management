@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class nalanda_user extends Model
 {
     use HasFactory;
+
+  public function class_room(){
+      return $this->belongsTo(class_room::class);
+  }
 }

@@ -11,15 +11,21 @@
     /* ===== Colors ===== */
     --primary-color: #0E4BF1;
     --panel-color: #FFF;
+    --btn-back:#FFE6AC;
     --text-color: #000;
+    --button-red:#fe7968;
+    --thead-color:#4DA3FF;
+    --button-blue:#4DA3FF;
     --black-light-color: #707070;
     --border-color: #e6e5e5;
+    --Trow-color:#DDD;
     --toggle-color: #DDD;
     --box1-color: #4DA3FF;
     --box2-color: #FFE6AC;
     --box3-color: #E7D1FC;
     --title-icon-color: #fff;
-
+    --other-border:#000;
+    --rowselect-color:#E7D1FC;
     /* ====== Transition ====== */
     --tran-05: all 0.5s ease;
     --tran-03: all 0.3s ease;
@@ -32,8 +38,13 @@ body{
 }
 body.dark{
     --primary-color: #3A3B3C;
+    --other-border:#fff;
     --panel-color: #242526;
     --text-color: #CCC;
+    --btn-back:#CCC;
+    --button-blue:#CCC;
+    --Trow-color:#4D4C4C;;
+    --rowselect-color:#CCC;
     --black-light-color: #CCC;
     --border-color: #4D4C4C;
     --toggle-color: #FFF;
@@ -41,6 +52,7 @@ body.dark{
     --box2-color: #3A3B3C;
     --box3-color: #3A3B3C;
     --title-icon-color: #CCC;
+    --thead-color:#CCC;
 }
 /* === Custom Scroll Bar CSS === */
 ::-webkit-scrollbar {
@@ -299,6 +311,7 @@ nav.close ~ .dashboard .top{
     color: var(--text-color);
     margin-left: 10px;
 }
+
 .dash-content .boxes{
     display: flex;
     align-items: center;
@@ -423,7 +436,8 @@ nav.close ~ .dashboard .top{
         width: 0px;
     }
     nav.close{
-        width: 73px;
+
+        width: 63px;
     }
     nav .logo_name{
         opacity: 0;
@@ -446,8 +460,8 @@ nav.close ~ .dashboard .top{
         width: 100%;
     }
     nav.close ~ .dashboard{
-        left: 73px;
-        width: calc(100% - 73px);
+        left: 63px;
+        width: calc(100% - 63px);
     }
     nav ~ .dashboard .top{
         left: 0;

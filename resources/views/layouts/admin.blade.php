@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @yield('csrf')
 
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
@@ -26,52 +27,164 @@
         display: none;
     }
 
-    .dropdown-item:hover{
-        color:blue ;
+    .dropdown-item:hover {
+        color: blue;
+    }
+
+
+    .text2 {
+
+        color: var(--text-color);
+
+    }
+
+    .borderOther {
+        border-width: 2px;
+        border-color: var(--other-border);
+    }
+
+    .textOther {
+
+        color: var(--panel-color);
+
+    }
+
+    .back {
+        background-color: var(--thead-color);
+    }
+
+    .buttonBack {
+        background-color: var(--btn-back)
+    }
+
+    .buttonRed {
+        background-color: var(--button-red);
+    }
+
+    .buttonBlue {
+        background-color: var(--button-blue);
+    }
+
+    .input {
+
+        border: 1px solid var(--border-color);
+        background-color: var(--panel-color);
+
+        color: var(--text-color);
+
+        outline: none;
+        outline-width: 1px;
+        outline-style: solid;
+        outline-color: var(--text-color);
+    }
+
+    .input:focus {
+        background-color: var(--panel-color);
+
+        border: 1px solid var(--border-color);
+        background-color: var(--panel-color);
+
+        color: var(--text-color);
+
+
+    }
+
+    .input::placeholder {
+        color: var(--text-color);
+    }
+
+    .Trow:hover {
+        background-color: var(--Trow-color);
+        cursor: pointer;
+    }
+
+    .hoverClr {
+        background-color: var(--rowselect-color);
+        cursor: pointer;
+    }
+
+    .userRow>td {
+        vertical-align: middle;
     }
 </style>
 
-<body>
+<body onload="checkMobile();">
     <nav style="z-index: 1000;">
         <div class="logo-name ">
-            <div class="logo-image">
+            <div class="logo-image d-lg-block d-none">
                 <img src="{{ asset('resources/logo.jpeg') }}" alt="">
             </div>
 
             <span class="logo_name">NCSS Admin</span>
         </div>
 
-        <div class="menu-items">
+        <div class="menu-items ">
             <ul class="nav-links">
                 <li><a href="/dashboard">
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Dahsboard</span>
                     </a></li>
-                <li><a href="#">
+                {{-- <li><a href="{{ route('manageUser') }}">
                         <i class="fa-solid fa-user"></i>
                         <span class="link-name">Manage Users</span>
-                    </a></li>
+                    </a></li> --}}
                 <li><a class="nav-link dropdown-toggle p-0" style="color: #707070;" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                            class="fa-solid fa-pen-to-square"></i><span class="d-lg-block d-none" id="editText">Edit</span>
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                            class="fa-solid fa-user"></i><span class="d-lg-block d-none link-name"
+                            id="editText">Users</span>
                     </a>
-                    <div class="dropdown-menu position-absolute" style="z-index: 10000;"
+                    <div class="dropdown-menu position-absolute bg-light shadow-lg" style="z-index: 10000;opacity: 1;"
                         aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/dashboard/edit?type=class">Edit Classes</a>
-                        <a class="dropdown-item" href="/dashboard/edit?type=grade">Edit Grades</a>
+
+
+
+                        <a class="dropdown-item" href="#">Approve Users</a>
+                        <a class="dropdown-item" href="{{ route('manageUser') }}">Manage Users</a>
 
 
                     </div>
 
                 </li>
+                {{-- <li><a class="nav-link dropdown-toggle p-0" style="color: #707070;" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                            class="fa-solid fa-pen-to-square"></i><span class="d-lg-block d-none link-name"
+                            id="editText">Edit</span>
+                    </a>
+                    <div class="dropdown-menu position-absolute" style="z-index: 10000;"
+                        aria-labelledby="navbarDropdown">
+
+
+                        <a class="dropdown-item" href="{{ route('edit', ['type' => 'class']) }}">Edit Classes</a>
+                        <a class="dropdown-item" href="/dashboard/edit?type=grade">Edit Grades</a>
+
+
+                    </div>
+
+                </li> --}}
+                <li><a href="{{ route('edit', ['type' => 'class']) }}">
+                        <i class="fa-solid fa-pen-to-square"></i> <span class="link-name">Edit Class</span>
+                    </a></li>
                 <li><a href="#">
                         <i class="uil uil-thumbs-up"></i>
                         <span class="link-name">Like</span>
                     </a></li>
-                <li><a href="#">
-                        <i class="uil uil-comments"></i>
-                        <span class="link-name">Manage Comments</span>
-                    </a></li>
+
+                <li><a class="nav-link dropdown-toggle p-0" style="color: #707070;" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                            class="uil uil-thumbs-up"></i><span class="d-lg-block d-none link-name"
+                            id="editText">Posts</span>
+                    </a>
+                    <div class="dropdown-menu position-absolute" style="z-index: 10000;"
+                        aria-labelledby="navbarDropdown">
+
+
+                        <a class="dropdown-item" href="#">Manage Prosts</a>
+                        <a class="dropdown-item" href="#">Approve Posts</a>
+
+
+                    </div>
+
+                </li>
                 <li><a href="#">
                         <i class="uil uil-share"></i>
                         <span class="link-name">Share</span>
@@ -79,7 +192,7 @@
             </ul>
 
             <ul class="logout-mode">
-                <li><a href="#">
+                <li><a href="#" onclick="signout();">
                         <i class="uil uil-signout"></i>
                         <span class="link-name">Logout</span>
                     </a></li>
@@ -97,8 +210,8 @@
             </ul>
         </div>
     </nav>
-    <div class="dashboard ">
-        <div class="top" style="z-index: 20">
+    <div class="dashboard -2">
+        <div class="top " style="z-index: 20">
             <i class="uil uil-bars sidebar-toggle"></i>
 
             <div class="search-box">
@@ -110,12 +223,12 @@
         </div>
         @yield('adminDashboard')
     </div>
-
-
-    <script src="{{ asset('/js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+    <script src="{{ asset('/js/script.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>

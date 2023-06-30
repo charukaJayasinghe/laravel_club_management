@@ -17,4 +17,8 @@ class class_room extends Model
     {
         return $this->belongsTo(admin::class);
     }
+
+    public function nalanda_users(){
+      return $this->hasMany(nalanda_user::class);
+    }
 }
