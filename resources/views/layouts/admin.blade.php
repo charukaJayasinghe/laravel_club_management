@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
     <!----===== Iconscout CSS ===== -->
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -49,8 +49,21 @@
 
     }
 
+    .backColor{
+        background-color: var(--panel-color);
+
+    }
+
     .back {
         background-color: var(--thead-color);
+    }
+
+    .closeButton{
+        outline-width: 1px;
+        outline-style: solid;
+        outline-color: var(--text-color);
+        background-color: var(--panel-color);
+        color: var(--text-color);
     }
 
     .buttonBack {
@@ -63,6 +76,10 @@
 
     .buttonBlue {
         background-color: var(--button-blue);
+    }
+
+    .buttonYellow{
+        background-color: var(--button-yellow);
     }
 
     .input {
@@ -223,6 +240,7 @@
         </div>
         @yield('adminDashboard')
     </div>
+    @yield('bmodels')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

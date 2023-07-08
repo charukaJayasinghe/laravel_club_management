@@ -16,6 +16,7 @@
     --button-red:#fe7968;
     --thead-color:#4DA3FF;
     --button-blue:#4DA3FF;
+    --button-yellow:#FFE6AC;
     --black-light-color: #707070;
     --border-color: #e6e5e5;
     --Trow-color:#DDD;
@@ -43,6 +44,7 @@ body.dark{
     --text-color: #CCC;
     --btn-back:#CCC;
     --button-blue:#CCC;
+    --button-yellow:#f1d693;
     --Trow-color:#4D4C4C;;
     --rowselect-color:#CCC;
     --black-light-color: #CCC;

@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_status', function (Blueprint $table) {
-            $table->id();
-            $table->string("name")->nullable(false);
-            $table->timestamps();
-        });
+
+        Schema::dropIfExists('user_statuses');
     }
 
     /**
@@ -23,6 +20,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_status');
+        Schema::table('nalanda_user_forstatsus2', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_status', function (Blueprint $table) {
-            $table->id();
-            $table->string("name")->nullable(false);
-            $table->timestamps();
+        Schema::table('nalanda_users', function (Blueprint $table) {
+
+            $table->unsignedBigInteger('user_approvement_id');
+            $table->foreign('user_approvement_id')->references('id')->on('user_approvements');
+
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_status');
+        //
     }
 };

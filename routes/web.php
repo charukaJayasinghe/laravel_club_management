@@ -22,6 +22,9 @@ Route::get('/',[signinController::class,'index'])->name('signin');
 Route::post('/login',[signinController::class,'login']);
 
 Route::middleware('admin')->group(function () {
+    Route::post("/dashboard/searchUser",[manageUsersController::class,'searchUser']);
+    Route::post("/dashboard/viewUser",[manageUsersController::class,'viewUser']);
+    Route::post("/dashboard/blockUser",[manageUsersController::class,'statusChange']);
     Route::get("/manageUser",[manageUsersController::class,'index'])->name('manageUser');
     Route::get('/dashboard', [loginController::class,'login'])->name('login');
     Route::get('/dashboard/edit',[editController::class,'index'])->name("edit");

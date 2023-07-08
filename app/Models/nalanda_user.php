@@ -12,4 +12,10 @@ class nalanda_user extends Model
   public function class_room(){
       return $this->belongsTo(class_room::class);
   }
+
+  public function user_status(){
+    return $this->belongsTo(user_status::class);
+}
+
+
 }
