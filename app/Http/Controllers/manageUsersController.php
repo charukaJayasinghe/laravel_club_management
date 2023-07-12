@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\class_room;
 use App\Models\grade;
 use App\Models\nalanda_user;
+use App\Models\user_approvement;
 use App\Models\user_status;
 use Illuminate\Http\Request;
 use stdClass;
@@ -102,5 +103,23 @@ class manageUsersController extends Controller
 
         $data = $users;
         return view("admin.viewUser", ["data" => $data]);
+    }
+
+    public function approveUser(){
+        $data = nalanda_user::where("user_approvement_id","=","1")->get();
+        return view("admin.approveUsers",["data"=>$data]);
+    }
+
+    public function approveUserProcess(Request $request){
+        $userId = $request->input("id");
+        $user = nalanda_user::find($userId);
+        $currentApprove = $user->user_approvement->name;
+        if ($currentApprove == "Disaproved") {
+            $record =  user_approvement::where('name', '=', "Approved")->first();
+            $newApprove = $record->id;
+            $user->user_approvement_id = $newApprove;
+            $user->save();
+            return "Approved";
+        }
     }
 }

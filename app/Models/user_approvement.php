@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class user_approvement extends Model
 {
     use HasFactory;
+    public function nalanda_users(){
+        return $this->hasMany(nalanda_user::class);
+    }
 }

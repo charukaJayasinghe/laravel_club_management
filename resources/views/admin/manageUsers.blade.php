@@ -28,7 +28,7 @@
                     <div class="col-12 col-lg-6">
                         <div class="row d-flex flex-row justify-content-center ">
                             <div class="col-6  mt-lg-0 mt-2 ">
-                                <select onchange="searchUser();" id="grade" class="form-control input">
+                                <select onchange="searchUser();" id="Mgrade" class="form-control input">
                                     <option value="0"><span class="d-none d-lg-block">Select Grade</span> </option>
                                     @foreach ($grade as $grade)
                                         <option value="{{ $grade->name }}" ><span class="d-none d-lg-block">Grade</span>
@@ -38,7 +38,7 @@
 
                             </div>
                             <div class="col-6 mt-lg-0 mt-2">
-                                <select onchange="searchUser();" id="class" class="form-control input">
+                                <select onchange="searchUser();" id="Mclass" class="form-control input">
                                     <option value="0"><span class="d-none d-lg-block">Select Class</span> </option>
                                     @foreach ($class as $class)
                                         <option value=" {{ $class->name }}" ><span class="d-none d-lg-block">class</span>
@@ -67,6 +67,9 @@
                     </thead>
                     <tbody id="userBody">
                         @foreach ($data as $data)
+                          @if ($data->user_approvement_id == "1")
+                           <?php continue; ?>
+                          @endif
                             <tr class="text2 Trow userRow">
                                 <td scope="row">{{ $data->id }}</td>
 

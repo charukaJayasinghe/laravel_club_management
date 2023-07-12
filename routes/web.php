@@ -5,6 +5,8 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\manageUsersController;
 use App\Http\Controllers\signinController;
 use App\Http\Controllers\signoutController;
+use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +20,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[signinController::class,'index'])->name('signin');
-Route::post('/login',[signinController::class,'login']);
-
+Route::get('/signup',[UserHomeController::class,'signup'])->name('signup');
+Route::get('/login',[UserHomeController::class,'login'])->name('Userlogin');
+Route::get('/admin',[signinController::class,'index'])->name('signin');
+Route::post('/adminLogin',[signinController::class,'login']);
+Route::post('/userLoginProcess',[UserHomeController::class,'loginprocess']);
+Route::post('/userSignup',[UserHomeController::class,'signupProcess']);
+Route::middleware('user')->group(function () {
+    Route::get("/userDashboard",[UserDashboardController::class,'viewHome']);
+});
 Route::middleware('admin')->group(function () {
+    Route::post("/dashboard/approveUserProcess",[manageUsersController::class,'approveUserProcess']);
+    Route::get("/dashboard/approveUser",[manageUsersController::class,'approveUser'])->name('approveUser');
     Route::post("/dashboard/searchUser",[manageUsersController::class,'searchUser']);
     Route::post("/dashboard/viewUser",[manageUsersController::class,'viewUser']);
     Route::post("/dashboard/blockUser",[manageUsersController::class,'statusChange']);

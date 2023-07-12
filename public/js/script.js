@@ -179,7 +179,7 @@ function adminLogin() {
             }
         }
     };
-    r.open("POST", "/login", true);
+    r.open("POST", "/adminLogin", true);
     r.send(f);
 }
 
@@ -266,8 +266,8 @@ function searchUser(){
     var r = new XMLHttpRequest();
     var f = new FormData();
     f.append("word", document.getElementById("word").value);
-    f.append("grade", document.getElementById("grade").value);
-    f.append("class", document.getElementById("class").value);
+    f.append("grade", document.getElementById("Mgrade").value);
+    f.append("class", document.getElementById("Mclass").value);
     f.append("_token", $('meta[name="csrf-token"]').attr("content"));
     r.onreadystatechange = function () {
         if (r.readyState == 4) {
@@ -275,5 +275,28 @@ function searchUser(){
         }
     };
     r.open("POST", "/dashboard/searchUser", true);
+    r.send(f);
+}
+
+function approveUser(id){
+    var r = new XMLHttpRequest();
+    var f = new FormData();
+    f.append("id", id);
+
+    f.append("_token", $('meta[name="csrf-token"]').attr("content"));
+    r.onreadystatechange = function () {
+        if (r.readyState == 4) {
+           if(r.responseText == "Approved"){
+            Swal.fire(
+                "Success",
+                "User Approved Successfully",
+                "success"
+            ).then(function () {
+                location.reload();
+            });
+           }
+        }
+    };
+    r.open("POST", "/dashboard/approveUserProcess", true);
     r.send(f);
 }

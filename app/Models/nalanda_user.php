@@ -16,6 +16,9 @@ class nalanda_user extends Model
   public function user_status(){
     return $this->belongsTo(user_status::class);
 }
+public function user_approvement(){
+    return $this->belongsTo(user_approvement::class);
+}
 
 
 }

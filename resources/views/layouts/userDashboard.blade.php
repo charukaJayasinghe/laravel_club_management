@@ -49,7 +49,7 @@
 
     }
 
-    .backColor{
+    .backColor {
         background-color: var(--panel-color);
 
     }
@@ -58,7 +58,7 @@
         background-color: var(--thead-color);
     }
 
-    .closeButton{
+    .closeButton {
         outline-width: 1px;
         outline-style: solid;
         outline-color: var(--text-color);
@@ -78,7 +78,7 @@
         background-color: var(--button-blue);
     }
 
-    .buttonYellow{
+    .buttonYellow {
         background-color: var(--button-yellow);
     }
 
@@ -132,75 +132,38 @@
                 <img src="{{ asset('resources/logo.jpeg') }}" alt="">
             </div>
 
-            <span class="logo_name">NCSS Admin</span>
+            <span class="logo_name">Welcome, {{ session('user')['full_name'] }}</span>
         </div>
 
         <div class="menu-items ">
             <ul class="nav-links">
-                <li><a href="/dashboard">
+                <li><a href="">
                         <i class="uil uil-estate"></i>
-                        <span class="link-name">Dahsboard</span>
-                    </a></li>
-                {{-- <li><a href="{{ route('manageUser') }}">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="link-name">Manage Users</span>
-                    </a></li> --}}
-                <li><a class="nav-link dropdown-toggle p-0" style="color: #707070;" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                            class="fa-solid fa-user"></i><span class="d-lg-block d-none link-name"
-                            id="editText">Users</span>
+                        <span class="link-name">Home</span>
                     </a>
-                    <div class="dropdown-menu position-absolute bg-light shadow-lg" style="z-index: 10000;opacity: 1;"
-                        aria-labelledby="navbarDropdown">
-
-
-
-                        <a class="dropdown-item" href="{{ route('approveUser') }}">Approve Users</a>
-                        <a class="dropdown-item" href="{{ route('manageUser') }}">Manage Users</a>
-
-
-                    </div>
-
                 </li>
-                {{-- <li><a class="nav-link dropdown-toggle p-0" style="color: #707070;" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                            class="fa-solid fa-pen-to-square"></i><span class="d-lg-block d-none link-name"
-                            id="editText">Edit</span>
-                    </a>
-                    <div class="dropdown-menu position-absolute" style="z-index: 10000;"
-                        aria-labelledby="navbarDropdown">
 
-
-                        <a class="dropdown-item" href="{{ route('edit', ['type' => 'class']) }}">Edit Classes</a>
-                        <a class="dropdown-item" href="/dashboard/edit?type=grade">Edit Grades</a>
-
-
-                    </div>
-
-                </li> --}}
-                <li><a href="{{ route('edit', ['type' => 'class']) }}">
-                        <i class="fa-solid fa-pen-to-square"></i> <span class="link-name">Edit Class</span>
-                    </a></li>
                 <li><a href="#">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span class="link-name">Like</span>
-                    </a></li>
-
-                <li><a class="nav-link dropdown-toggle p-0" style="color: #707070;" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-brands fa-microblog"></i><span class="d-lg-block d-none link-name"
-                            id="editText">Posts</span>
+                        <i class="fa-brands fa-microblog"></i>
+                        <span class="link-name">My Posts </span>
                     </a>
-                    <div class="dropdown-menu position-absolute" style="z-index: 10000;"
-                        aria-labelledby="navbarDropdown">
-
-                        <a class="dropdown-item" href="#">Approve Posts</a>
-                        <a class="dropdown-item" href="#">Manage Posts</a>
-
-
-
-                    </div>
-
                 </li>
+
+                <li><a href="#">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="link-name">Create Post </span>
+                    </a>
+                </li>
+
+                <li><a href="#">
+                        <i class="fa-brands fa-microblog"></i>
+                        <span class="link-name">My Profile </span>
+                    </a>
+                </li>
+
+
+
+
                 <li><a href="#">
                         <i class="uil uil-share"></i>
                         <span class="link-name">Share</span>
