@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Admin Dashboard Panel</title>
+    @yield('styles')
 </head>
 
 <style>
@@ -106,6 +107,12 @@
 
     }
 
+    .myShadow{
+        -webkit-box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
+-moz-box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
+box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
+    }
+
     .input::placeholder {
         color: var(--text-color);
     }
@@ -123,6 +130,10 @@
     .userRow>td {
         vertical-align: middle;
     }
+
+    .userDashBackground{
+        background-color:var(--userback-color) ;
+    }
 </style>
 
 <body onload="checkMobile();">
@@ -132,12 +143,13 @@
                 <img src="{{ asset('resources/logo.jpeg') }}" alt="">
             </div>
 
-            <span class="logo_name">Welcome, {{ session('user')['full_name'] }}</span>
+
+            <span class="logo_name">Welcome, {{ $data}}</span>
         </div>
 
         <div class="menu-items ">
             <ul class="nav-links">
-                <li><a href="">
+                <li><a href="{{ route('viewHome') }}">
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Home</span>
                     </a>
@@ -149,14 +161,14 @@
                     </a>
                 </li>
 
-                <li><a href="#">
+                <li><a href="{{ route('viewCreatePost') }}">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span class="link-name">Create Post </span>
                     </a>
                 </li>
 
                 <li><a href="#">
-                        <i class="fa-brands fa-microblog"></i>
+                    <i class="bi bi-person-circle"></i>
                         <span class="link-name">My Profile </span>
                     </a>
                 </li>
@@ -189,7 +201,7 @@
             </ul>
         </div>
     </nav>
-    <div class="dashboard -2">
+    <div class="dashboard -2 userDashBackground" >
         <div class="top " style="z-index: 20">
             <i class="uil uil-bars sidebar-toggle"></i>
 

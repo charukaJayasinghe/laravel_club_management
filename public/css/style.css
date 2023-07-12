@@ -10,6 +10,7 @@
 :root{
     /* ===== Colors ===== */
     --primary-color: #0E4BF1;
+    --userback-color:#f3f6f9;
     --panel-color: #FFF;
     --btn-back:#FFE6AC;
     --text-color: #000;
@@ -41,6 +42,7 @@ body.dark{
     --primary-color: #3A3B3C;
     --other-border:#fff;
     --panel-color: #242526;
+    --userback-color:#242526;
     --text-color: #CCC;
     --btn-back:#CCC;
     --button-blue:#CCC;

@@ -7,6 +7,7 @@ use App\Http\Controllers\signinController;
 use App\Http\Controllers\signoutController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserHomeController;
+use App\Http\Controllers\UserPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,9 @@ Route::post('/adminLogin',[signinController::class,'login']);
 Route::post('/userLoginProcess',[UserHomeController::class,'loginprocess']);
 Route::post('/userSignup',[UserHomeController::class,'signupProcess']);
 Route::middleware('user')->group(function () {
-    Route::get("/userDashboard",[UserDashboardController::class,'viewHome']);
+    Route::get("/userDashboard",[UserDashboardController::class,'viewHome'])->name('viewHome');
+    Route::get("/createPost",[UserPostController::class,'viewCreatePost'])->name('viewCreatePost');
+    Route::post("/createPostProcess",[UserPostController::class,'makePost']);
 });
 Route::middleware('admin')->group(function () {
     Route::post("/dashboard/approveUserProcess",[manageUsersController::class,'approveUserProcess']);

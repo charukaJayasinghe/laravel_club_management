@@ -300,3 +300,45 @@ function approveUser(id){
     r.open("POST", "/dashboard/approveUserProcess", true);
     r.send(f);
 }
+
+var issetImg = 0;
+function changeImage() {
+
+
+    var image = document.getElementById("profileimg");
+    var prev = document.getElementById("prev0");
+
+
+    image.onchange = function () {
+
+        var file0 = this.files[0];
+        var url0 = window.URL.createObjectURL(file0);
+        prev.src = url0;
+        issetImg = 1;
+    };
+
+}
+
+function publishPost(){
+    var title = document.getElementById('title').value;
+    var description = document.getElementById('description').value;
+    var image = document.getElementById("profileimg");
+
+    var f = new FormData();
+    f.append("_token", $('meta[name="csrf-token"]').attr("content"));
+    f.append('title',title);
+    f.append('description',description);
+    f.append("i", image.files[0]);
+
+    var r = new XMLHttpRequest();
+    r.onreadystatechange = function(){
+        if(r.readyState == 4){
+            alert(r.responseText);
+        }
+    }
+
+    r.open("POST",'/createPostProcess',true);
+    r.send(f);
+
+
+}

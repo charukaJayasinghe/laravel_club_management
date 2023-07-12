@@ -19,6 +19,8 @@ class nalanda_user extends Model
 public function user_approvement(){
     return $this->belongsTo(user_approvement::class);
 }
-
+public function posts(){
+    return $this->hasMany(post::class);
+  }
 
 }
