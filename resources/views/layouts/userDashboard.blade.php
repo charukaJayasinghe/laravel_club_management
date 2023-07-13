@@ -10,7 +10,7 @@
 
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-
+    <link rel="icon" href="{{ asset('images/logo.jpeg') }}">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -19,7 +19,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Admin Dashboard Panel</title>
+    <title>NCSS | User Dashboard </title>
     @yield('styles')
 </head>
 
@@ -155,7 +155,7 @@ box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
                     </a>
                 </li>
 
-                <li><a href="#">
+                <li><a href="{{ route('viewMyPosts') }}">
                         <i class="fa-brands fa-microblog"></i>
                         <span class="link-name">My Posts </span>
                     </a>
@@ -173,9 +173,6 @@ box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
                     </a>
                 </li>
 
-
-
-
                 <li><a href="#">
                         <i class="uil uil-share"></i>
                         <span class="link-name">Share</span>
@@ -183,7 +180,7 @@ box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
             </ul>
 
             <ul class="logout-mode">
-                <li><a href="#" onclick="signout();">
+                <li><a href="#" onclick="userSignout();">
                         <i class="uil uil-signout"></i>
                         <span class="link-name">Logout</span>
                     </a></li>

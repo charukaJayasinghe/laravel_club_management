@@ -10,7 +10,7 @@
 
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-
+    <link rel="icon" href="{{ asset('images/logo.jpeg') }}">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -19,7 +19,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Admin Dashboard Panel</title>
+    <title>NCSS | Admin Dashboard</title>
 </head>
 
 <style>
@@ -49,7 +49,7 @@
 
     }
 
-    .backColor{
+    .backColor {
         background-color: var(--panel-color);
 
     }
@@ -58,7 +58,7 @@
         background-color: var(--thead-color);
     }
 
-    .closeButton{
+    .closeButton {
         outline-width: 1px;
         outline-style: solid;
         outline-color: var(--text-color);
@@ -78,7 +78,7 @@
         background-color: var(--button-blue);
     }
 
-    .buttonYellow{
+    .buttonYellow {
         background-color: var(--button-yellow);
     }
 
@@ -187,13 +187,14 @@
                     </a></li>
 
                 <li><a class="nav-link dropdown-toggle p-0" style="color: #707070;" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-brands fa-microblog"></i><span class="d-lg-block d-none link-name"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                            class="fa-brands fa-microblog"></i><span class="d-lg-block d-none link-name"
                             id="editText">Posts</span>
                     </a>
                     <div class="dropdown-menu position-absolute" style="z-index: 10000;"
                         aria-labelledby="navbarDropdown">
 
-                        <a class="dropdown-item" href="#">Approve Posts</a>
+                        <a class="dropdown-item" href="{{ route('adminApprovePost') }}">Approve Posts</a>
                         <a class="dropdown-item" href="#">Manage Posts</a>
 
 

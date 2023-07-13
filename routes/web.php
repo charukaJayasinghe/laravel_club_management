@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\editController;
+use App\Http\Controllers\guestController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\manageUsersController;
 use App\Http\Controllers\signinController;
@@ -27,10 +29,14 @@ Route::get('/admin',[signinController::class,'index'])->name('signin');
 Route::post('/adminLogin',[signinController::class,'login']);
 Route::post('/userLoginProcess',[UserHomeController::class,'loginprocess']);
 Route::post('/userSignup',[UserHomeController::class,'signupProcess']);
+Route::get('/',[guestController::class,'index'])->name('home');
+
 Route::middleware('user')->group(function () {
     Route::get("/userDashboard",[UserDashboardController::class,'viewHome'])->name('viewHome');
     Route::get("/createPost",[UserPostController::class,'viewCreatePost'])->name('viewCreatePost');
     Route::post("/createPostProcess",[UserPostController::class,'makePost']);
+    Route::post('/user/sigout',[signoutController::class,'signout']);
+    Route::get('/viewMyPosts',[UserPostController::class,'viewMyPosts'])->name('viewMyPosts');
 });
 Route::middleware('admin')->group(function () {
     Route::post("/dashboard/approveUserProcess",[manageUsersController::class,'approveUserProcess']);
@@ -44,7 +50,10 @@ Route::middleware('admin')->group(function () {
     Route::post('/dashboard/addClass',[editController::class,'saveClass']);
     Route::post('/dashboard/removeClass',[editController::class,'removeClass']);
     Route::post('/dashboard/viewClass',[editController::class,'viewClass']);
-   Route::post('/dashboard/sigout',[signoutController::class,'signout']);
+    Route::post('/dashboard/sigout',[signoutController::class,'signout']);
+    Route::get('/dashboard/approvePosts',[AdminPostController::class,'approve'])->name('adminApprovePost');
+    Route::post('/dashboard/viewPost',[AdminPostController::class,'viewPost']);
+    Route::post('/dashboard/approvePostProcess',[AdminPostController::class,'approvePost']);
 });
 
 

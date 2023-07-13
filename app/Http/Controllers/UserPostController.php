@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\post;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 
 class UserPostController extends Controller
@@ -52,5 +53,16 @@ class UserPostController extends Controller
         }
 
         return $res;
+    }
+
+    public function viewMyPosts(Request $request){
+        $full_name = $request->session()->get('user')["full_name"];
+        $name = explode(" ", $full_name)[0];
+        $post = post::where('nalanda_user_id',"=",$request->session()->get('user')['id'])->orderBy('updated_at','desc')->get();
+
+        if(count($post) == 0){
+          $post = "none";
+        }
+        return view('user.viewMyPost',['data' => $name,'post'=>$post]);
     }
 }

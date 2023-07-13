@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="col-6">
                                         <button style="font-size: 20px" onclick="showStudentDetails({{ $data->id }});"
-                                            class="btn py-2 buttonBlue rounded-1 col textOther"><span>More</span> <i
+                                            class="btn py-2 buttonBlue rounded-1 col textOther"><span>View</span> <i
                                                 class="fa-sharp fa-solid  fa-circle-info"></i></button>
                                         {{-- <button class="btn btn-primary w-100">More <i class="fa-sharp fa-solid fa-circle-info"></i></button> --}}
                                     </div>

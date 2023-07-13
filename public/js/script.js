@@ -204,6 +204,27 @@ function signout() {
     r.send(f);
 }
 
+function userSignout() {
+    var f = new FormData();
+    f.append("_token", $('meta[name="csrf-token"]').attr("content"));
+    var r = new XMLHttpRequest();
+    r.onreadystatechange = function () {
+        if (r.readyState == 4) {
+            if (r.responseText == "Success") {
+                Swal.fire("Success", "Sign Out Success", "success").then(
+                    function () {
+                        window.location = "/";
+                    }
+                );
+            } else {
+                Swal.fire("Warning", r.responseText, "warning");
+            }
+        }
+    };
+    r.open("POST", "/user/sigout", true);
+    r.send(f);
+}
+
 function blockUser(id) {
     var r = new XMLHttpRequest();
     var f = new FormData();
@@ -333,12 +354,74 @@ function publishPost(){
     var r = new XMLHttpRequest();
     r.onreadystatechange = function(){
         if(r.readyState == 4){
-            alert(r.responseText);
+            if(r.responseText == "success"){
+                Swal.fire(
+                    "Success",
+                    "Post Published Successfully",
+                    "success"
+                ).then(function () {
+                    location.reload();
+                });
+            }else{
+                Swal.fire("Warning", r.responseText, "warning");
+            }
         }
     }
 
     r.open("POST",'/createPostProcess',true);
     r.send(f);
 
+
+}
+
+function showPostDetails(id){
+    var r = new XMLHttpRequest();
+    var f = new FormData();
+    f.append("id", id);
+    f.append("_token", $('meta[name="csrf-token"]').attr("content"));
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4) {
+
+            var obj = JSON.parse(r.responseText);
+            document.getElementById("user").value = obj.user;
+            document.getElementById("title").value = obj.title;
+            document.getElementById("description").innerHTML = obj.description;
+            document.getElementById("created_date").value = obj.created_date;
+            document.getElementById("created_time").value = obj.created_time;
+            document.getElementById("postImg").src =  obj.image;
+
+            var m = document.getElementById("myModal");
+            bm = new bootstrap.Modal(m);
+            bm.show();
+        }
+    };
+    r.open("POST", "/dashboard/viewPost", true);
+    r.send(f);
+}
+
+function approvePost(id){
+
+  var f = new FormData();
+  f.append("id",id)
+  var r = new XMLHttpRequest();
+
+  f.append("id", id);
+  f.append("_token", $('meta[name="csrf-token"]').attr("content"));
+  r.onreadystatechange = function(){
+     if(r.readyState == 4){
+        if(r.responseText == "Success"){
+            Swal.fire(
+                "Success",
+                "Post Approved Successfully",
+                "success"
+            ).then(function () {
+                location.reload();
+            });
+        }
+     }
+  }
+  r.open("POST", "/dashboard/approvePostProcess",true);
+  r.send(f);
 
 }

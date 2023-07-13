@@ -18,7 +18,7 @@
                     <table class="table">
                         <thead class="back">
                             <tr class="textOther">
-                                <th scope="col"># {{ count($data) }}</th>
+                                <th scope="col"># </th>
 
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
