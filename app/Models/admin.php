@@ -11,4 +11,16 @@ class admin extends Model
     public function class_rooms(){
       return $this->hasMany(class_room::class);
     }
+    public function board_positions(){
+        return $this->hasMany(board_position::class);
+    }
+
+    public function board_members(){
+        return $this->hasMany(board_member::class);
+    }
+
+
+    public function news(){
+        return $this->hasMany(news::class);
+      }
 }

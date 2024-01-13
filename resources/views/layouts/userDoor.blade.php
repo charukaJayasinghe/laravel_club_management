@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @yield('csrf')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>NC Science Society</title>
-    <link rel="icon" href="{{ asset('images/logo.jpeg') }}">
+    <title>NC Leo Club</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" href="{{ asset('images/LCNC.png') }}">
 </head>
 <style>
     @import url("https://fonts.googleapis.com/css?family=Titillium+Web");
@@ -40,7 +41,7 @@ body {
 }
 
 .back {
-    background-image: url("{{ asset('images/image.svg') }}");
+    background-image: url("{{ asset('images/LCNC.png') }}");
     background-repeat: no-repeat;
     height: 600px;
     background-position: center;
@@ -52,7 +53,7 @@ body {
     background-size: contain;
     height: 200px;
     background-position: center;
-    background-image: url("{{ asset('images/logo.jpeg') }}");
+    background-image: url("{{ asset('images/Leo Logo.png') }}");
 }
 
 .infield {
@@ -93,7 +94,7 @@ body {
     font-size: 18px;
     padding: 2px 6px;
     color: white;
-    background-color: #ff006a;
+    background-color: #C06C84;
 }
 
 .option {

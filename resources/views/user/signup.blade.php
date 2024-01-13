@@ -1,14 +1,16 @@
 @extends('layouts.userDoor')
 @section('content')
-<body style="background-color: #E9E8E8;">
+<body style="background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+">
     <div class="container-fluid ">
 
-        <div class="row  mt-5">
-            <div class="col-lg-8 col-10 offset-lg-2  offset-1 rounded-2 " style="background-color:  #DC3535;">
+        <div class="row  mt-5 px-2 px-lg-0">
+            <div class="col-lg-8 col-12 offset-lg-2   rounded-2 shadow-lg" style="background-color:  #005ea5">
                 <div class="row">
                     <div class="col-12">
-                        <h1 class='display-4 text-white text-center'>Signup at NC Science</h1>
-                        <p class="text-center text-white mt-5 fs-5">Signup to get the latest updates on Science</p>
+                        <h1 class='display-4 text-white text-center pt-3'>Signup at NC Leo Club</h1>
+                        <p class="text-center text-white mt-5 fs-5">Signup to get the latest updates in leo club of Nalanda College</p>
                         <div class="row mb-3 mt-5 px-3">
                             <div class="col-12 mt-3  " style="height: 4px;background-color: white;">
 
@@ -20,10 +22,22 @@
                     </div>
                     <div class="d-flex flex-column-reverse flex-lg-row justify-content-end">
                         <!-- user type nalanda -->
-                        <div id="CS"  class=" flex-column col-lg-6 offset-lg-1 col-12 mt-lg-0 mt-5 ">
-                            <div class="row">
+                        <div id="CS"  class=" flex-column col-lg-10 offset-lg-1 col-12 mt-lg-0 mt-5 ">
+                            <div class="row py-2">
                                 <div class="col-12 ps-lg-0 ps-3">
-                                    <span class="fs-3 text-white fw-bold">Personal Info</span>
+                                    <span class="fs-3 text-white fw-bold ">Profile Image</span>
+                                </div>
+                               <div class="col-lg-10 col-12 pt-3 d-flex justify-content-center align-items-center">
+                                 <img id="prev0" src="{{ asset('images/emptyUser.jpg') }}" class="img-thumbnail my-auto border border-white bg-transparent" style="height: 20rem;" alt="">
+                               </div>
+                               <div class="col-lg-6 offset-lg-2 col-12 d-grid pt-4">
+                                <input type="file" class="d-none" id="profileimg" accept="img/*" />
+                                  <label class="btn btn-light fs-3" onclick="changeImage();" for="profileimg"><i class="bi bi-cloud-arrow-up fs-2"></i>&nbsp; Upload</label>
+                               </div>
+                            </div>
+                            <div class="row pt-5">
+                                <div class="col-12 ps-lg-0 ps-3">
+                                    <span class="fs-3 text-white fw-bold ">Personal Info</span>
                                 </div>
                                 <div class="col-12 col-lg-10 ps-3 pt-3  d-block ">
                                     <div class="infield  mt-4 ">
@@ -135,33 +149,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- user type other -->
-                        <div class="col-lg-5 col-12  ">
-                            <div class="row h-100 ">
-                                <div class="col-12">
-                                    <span class="fs-3 text-white  fw-bold">Select User Type</span>
-                                </div>
+                     
 
-                                <div  class="col-lg-8 col-10 offset-1 h-75 d-flex align-items-center justify-content-center flex-column  gap-lg-5 gap-4">
-                                    <input type="radio" class="d-none"  name="select" id="option-1" checked>
-                                    <input type="radio" class="d-none" name="select" id="option-2">
-                                    <label id="nbtn" for="option-1" onclick="showNC();"  class="option option-1">
-                                        <div id="ndot" class="dot "></div>
-                                        <span class="fs-2 ps-lg-4 ps-0"> Nalanda Student</span>
-                                    </label>
-                                    <label id="obtn"  for="option-2" class="option option-2">
-                                        <div id="odot" class="dot rounded-circle"></div>
-                                        <span class="fs-2 ps-lg-4 ps-0">Other Student</span>
-                                    </label>
-                                </div>
-
-                            </div>
-
-                        </div>
 
                     </div>
                     <div class="col-lg-6 col-8 offset-2  offset-lg-3 d-grid py-3 ">
-                        <button class="btn fs-4" style="background-color:#68E1FD ;" onclick="signup();">Sign Up</button>
+                        <button id="signUpBtn" class="btn fs-4" style="background-color:#68E1FD ;" onclick="signup();">Sign Up</button>
                         <span class="text-white pt-2 mx-auto" style="cursor: pointer;" onclick="directToLogin();">Already Have an Account?</span>
                     </div>
                 </div>

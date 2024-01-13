@@ -99,6 +99,7 @@
     </script>
     <script src="{{ asset('js/script2.js') }}"></script>
 
+
 </body>
 @endsection
 @section('csrf')

@@ -13,12 +13,12 @@
             <div class="box box1">
                 <i class="uil uil-thumbs-up"></i>
                 <span class="text">Total Users</span>
-                <span class="number">50,120</span>
+                <span class="number">{{ $userCount }}</span>
             </div>
             <div class="box box2">
                 <i class="uil uil-comments"></i>
                 <span class="text">Total Posts</span>
-                <span class="number">20,120</span>
+                <span class="number">{{ $postCount }}</span>
             </div>
             <div class="box box3">
                 <i class="uil uil-share"></i>

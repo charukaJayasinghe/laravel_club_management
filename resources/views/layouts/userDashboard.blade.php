@@ -10,16 +10,15 @@
 
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <link rel="icon" href="{{ asset('images/logo.jpeg') }}">
+    <link rel="icon" href="{{ asset('images/LCNC.png') }}">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>NCSS | User Dashboard </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>LCNC | User Dashboard </title>
     @yield('styles')
 </head>
 
@@ -38,6 +37,14 @@
         color: var(--text-color);
 
     }
+
+    .text3 {
+
+color: var(--text-color-3);
+
+}
+
+
 
     .borderOther {
         border-width: 2px;
@@ -96,6 +103,20 @@
         outline-color: var(--text-color);
     }
 
+    .customeBtn{
+
+        border-style: solid;
+       border-width:1px;
+       border-color: var(--text-color) ;
+       background-color: transparent;
+    }
+    .customeBtn:focus{
+       border-style: solid;
+       border-width:1px;
+       border-color: var(--text-color) ;
+    }
+
+
     .input:focus {
         background-color: var(--panel-color);
 
@@ -134,13 +155,19 @@ box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
     .userDashBackground{
         background-color:var(--userback-color) ;
     }
+
+
+
+
+
+
 </style>
 
 <body onload="checkMobile();">
     <nav style="z-index: 1000;">
-        <div class="logo-name ">
+        <div class="logo-name">
             <div class="logo-image d-lg-block d-none">
-                <img src="{{ asset('resources/logo.jpeg') }}" alt="">
+                <img src="{{ asset('images/LCNC.png') }}" alt="">
             </div>
 
 
@@ -148,10 +175,10 @@ box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
         </div>
 
         <div class="menu-items ">
-            <ul class="nav-links">
+            <ul class="nav-links ps-0">
                 <li><a href="{{ route('viewHome') }}">
                         <i class="uil uil-estate"></i>
-                        <span class="link-name">Home</span>
+                        <span class="link-name ">Home</span>
                     </a>
                 </li>
 
@@ -167,7 +194,7 @@ box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
                     </a>
                 </li>
 
-                <li><a href="#">
+                <li><a href="{{ route('userProfile') }}">
                     <i class="bi bi-person-circle"></i>
                         <span class="link-name">My Profile </span>
                     </a>
@@ -179,7 +206,7 @@ box-shadow: -7px 10px 49px -24px rgba(0,0,0,0.75);
                     </a></li>
             </ul>
 
-            <ul class="logout-mode">
+            <ul class="logout-mode ps-0">
                 <li><a href="#" onclick="userSignout();">
                         <i class="uil uil-signout"></i>
                         <span class="link-name">Logout</span>

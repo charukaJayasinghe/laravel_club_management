@@ -12,7 +12,7 @@ class UserHomeController extends Controller
 {
     public function login()
     {
-        return view("user.login");
+        return view("user.login2");
     }
     public function signup()
     {
@@ -41,7 +41,9 @@ class UserHomeController extends Controller
             } else {
                 $result  = nalanda_user::where('email', '=', $email)->where('password', '=', md5($password))->first();
                  if($result->user_approvement_id != "2"){
-                   $res = "Please Wait till an Admin Approves you<br> Admin Whatsapp : 0712837212";
+                   $res = "Please Wait till an Admin Approves you<br> Admin Whatsapp : 0779460614";
+                 }else if($result->user_status_id != "2"){
+                    $res = "You have been Block by an admin <br> Admin Whatsapp : 0779460614";
                  }else{
                     $request->session()->put('user', $result);
                    $res = "Login Success";
@@ -68,9 +70,9 @@ class UserHomeController extends Controller
 
     public function signupProcess(Request $request)
     {
-        $type = $request->input("utype");
+
         $res = "";
-        if ($type == "Nalanda") {
+
 
             $fullName = $request->input("fullName");
             $index = $request->input("index");
@@ -78,6 +80,7 @@ class UserHomeController extends Controller
             $class = $request->input("class");
             $email = $request->input("email");
             $mobile = $request->input("mobile");
+            $isset = $request->input("isset");
             $password = $request->input("password");
             $repassword = $request->input("repassword");
             $address = $request->input("address");
@@ -113,39 +116,83 @@ class UserHomeController extends Controller
                 $res = "Passwords Does Not Match";
             } else {
 
-                $classRs = class_room::whereHas('grade', function ($query) use ($grade) {
-                    $query->where('name', '=', $grade);
-                })->where("name", "=", $class)->get();
+                if($isset == 1){
+                    if (!$request->hasFile('i')) {
+                        $res = "There Was an Error Please Try again";
+                    }else{
+                        $file = $request->file('i');
+                        if ($file->isValid()) {
+                            $extension = $file->getClientOriginalExtension();
+                            if (!in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
+                                $res = "Please Select a valid Image";
+                            }else{
+                                $classRs = class_room::whereHas('grade', function ($query) use ($grade) {
+                                    $query->where('name', '=', $grade);
+                                })->where("name", "=", $class)->get();
 
-                if (count($classRs) != 1) {
-                    $res = "Please Enter Valid Grade and Class";
-                } else {
-                    $results = nalanda_user::where("email", "=", $email)->orWhere("mobile", "=", $mobile)->orWhere("addno", "=", $index)->count();
-                    if ($results != 0) {
-                        $res = "A User Like This Aleady Exists";
+                                if (count($classRs) != 1) {
+                                    $res = "Please Enter Valid Grade and Class";
+                                } else {
+                                    $results = nalanda_user::where("email", "=", $email)->orWhere("mobile", "=", $mobile)->orWhere("addno", "=", $index)->count();
+                                    if ($results != 0) {
+                                        $res = "A User Like This Aleady Exists";
+                                    } else {
+                                        $classData = $classRs->first();
+                                        $approvement = new nalanda_user();
+                                        $path = $file->store('profile', 'public');
+                                        $approvement->full_name = $fullName;
+                                        $approvement->mobile = $mobile;
+                                        $approvement->password = md5($password);
+                                        $approvement->addno = $index;
+                                        $approvement->address = $address;
+                                        $approvement->email = $email;
+                                        $approvement->profileImg = $path;
+                                        $approvement->class_room_id = $classData->id;
+                                        $approvement->email = $email;
+                                        $approvement->user_status_id = 2;
+                                        $approvement->user_approvement_id = 1;
+                                        $approvement->save();
+                                        $res = "Success";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }else{
+                    $classRs = class_room::whereHas('grade', function ($query) use ($grade) {
+                        $query->where('name', '=', $grade);
+                    })->where("name", "=", $class)->get();
+
+                    if (count($classRs) != 1) {
+                        $res = "Please Enter Valid Grade and Class";
                     } else {
-                        $classData = $classRs->first();
-                        $approvement = new nalanda_user();
-                        $approvement->full_name = $fullName;
-                        $approvement->mobile = $mobile;
-                        $approvement->password = md5($password);
-                        $approvement->addno = $index;
-                        $approvement->address = $address;
-                        $approvement->email = $email;
-                        $approvement->class_room_id = $classData->id;
-                        $approvement->email = $email;
-                        $approvement->user_status_id = 2;
-                        $approvement->user_approvement_id = 1;
-                        $approvement->save();
-                        $res = "Success";
+                        $results = nalanda_user::where("email", "=", $email)->orWhere("mobile", "=", $mobile)->orWhere("addno", "=", $index)->count();
+                        if ($results != 0) {
+                            $res = "A User Like This Aleady Exists";
+                        } else {
+                            $classData = $classRs->first();
+                            $approvement = new nalanda_user();
+                            $approvement->full_name = $fullName;
+                            $approvement->mobile = $mobile;
+                            $approvement->password = md5($password);
+                            $approvement->addno = $index;
+                            $approvement->address = $address;
+                            $approvement->email = $email;
+                            $approvement->class_room_id = $classData->id;
+                            $approvement->email = $email;
+                            $approvement->user_status_id = 2;
+                            $approvement->user_approvement_id = 1;
+                            $approvement->save();
+                            $res = "Success";
+                        }
                     }
                 }
-            }
-            // $res = $fullName . " " . $index . " ".$grade . " ".$class." ".$email." ".$mobile." ".$password." ".$repassword;
 
-        } else if ($type == "Other") {
-            $res = "its Other";
-        }
+
+            }
+
+
+
         return $res;
     }
 }

@@ -2,8 +2,11 @@
 @section('adminDashboard')
     <div class="dash-content p-3" style="z-index: 20;overflow-x: hidden;">
         <div class="row">
-            <div class="col-12 title">
+            <div class="col-lg-6 col-12 title">
                 <span class="text2 h1">Approve Users</span>
+            </div>
+            <div class="col-lg-6 d-none d-lg-flex justify-content-center " >
+                <img src="{{ asset('images/ApproveUser.svg') }}" style="height: 20rem;padding-top: 2rem;" alt="">
             </div>
             <div class="col-12">
                 <div class="row">

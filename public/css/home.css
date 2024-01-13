@@ -1026,7 +1026,9 @@
     }
 
     .headline-3 { --fontSize-2: 2.4rem; }
-
+     .custome-menu{
+        display: block;
+     }
 
 
     /**
@@ -1062,8 +1064,8 @@
     }
 
     .hero-bg-2 {
-      bottom: -200px;
-      left: -20px;
+      top: 200px;
+      left:750px;
     }
 
     .shape-2 { left: 60px; }
@@ -1181,7 +1183,9 @@
      */
 
     .container { max-width: 930px; }
-
+.custome-menu{
+    display: none;
+}
 
 
     /**

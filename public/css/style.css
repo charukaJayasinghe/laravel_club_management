@@ -14,6 +14,7 @@
     --panel-color: #FFF;
     --btn-back:#FFE6AC;
     --text-color: #000;
+    --text-color-3:#6C757D;
     --button-red:#fe7968;
     --thead-color:#4DA3FF;
     --button-blue:#4DA3FF;
@@ -44,6 +45,7 @@ body.dark{
     --panel-color: #242526;
     --userback-color:#242526;
     --text-color: #CCC;
+    --text-color-3: #CCC;
     --btn-back:#CCC;
     --button-blue:#CCC;
     --button-yellow:#f1d693;

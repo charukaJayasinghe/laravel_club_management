@@ -11,4 +11,8 @@ class post extends Model
     public function nalanda_user(){
         return $this->belongsTo(nalanda_user::class);
     }
+
+    public function comments(){
+        return $this->hasMany(comment::class);
+    }
 }

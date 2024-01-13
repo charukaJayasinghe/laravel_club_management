@@ -44,6 +44,12 @@ class manageUsersController extends Controller
     {
         $user = nalanda_user::find($request->input("id"));
         $json = new stdClass();
+        if($user->profileImg != null){
+            $json->image = asset('storage/'.$user->profileImg) ;
+        }else{
+            $json->image = asset('images/emptyUser.jpg');
+        }
+
         $json->fullName = $user->full_name;
         $json->addno = $user->addno;
         $json->mobile = $user->mobile;

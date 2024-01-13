@@ -23,4 +23,8 @@ public function posts(){
     return $this->hasMany(post::class);
   }
 
+  public function comments(){
+    return $this->hasMany(comment::class);
+  }
+
 }

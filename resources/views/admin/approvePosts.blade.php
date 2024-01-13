@@ -2,8 +2,11 @@
 @section('adminDashboard')
     <div class="dash-content p-3" style="z-index: 20;overflow-x: hidden;">
         <div class="row">
-            <div class="col-12 title">
+            <div class="col-lg-6 col-12 title">
                 <span class="text2 h1">Approve Posts</span>
+            </div>
+            <div class="col-lg-6 d-none d-lg-flex justify-content-center  ">
+                <img src="{{ asset('images/approvePost.svg') }}" style="height: 20rem;" alt="">
             </div>
             <div class="col-12">
                 <div class="row">
@@ -46,23 +49,22 @@
 
                                         <button onclick="approvePost({{ $data->id }});"
                                             class="btn py-2 my-1 btn-success rounded-1 col"><span>Approve</span> <i
-                                                class="h5 bi bi-check-circle-fill text-white "></i></button>
-
+                                                class="h5 bi bi-check-circle-fill text-white "></i>
+                                        </button>
 
 
                                         <button style="font-size: 20px"
                                             class="btn py-2 my-1 btn-primary rounded-1 col text-white"
                                             onclick="showPostDetails({{ $data->id }});">
-                                            <span>View</span> <i class="bi bi-eye-fill "></i></button>
+                                            <span>View</span> <i class="bi bi-eye-fill "></i>
+                                        </button>
 
 
 
-                                        <button style="font-size: 20px"
-                                            class="btn py-2 my-1 buttonYellow rounded-1 col text-dark">
-                                            <span>Delete</span> <i class="bi bi-x-circle-fill"></i></button>
-
-
-
+                                        <button style="font-size: 20px" onclick="deletePost({{ $data->id }});"
+                                            class="btn py-2 my-1 btn-warning rounded-1 col text-dark">
+                                            <span>Delete</span> <i class="bi bi-x-circle-fill"></i>
+                                        </button>
 
 
                                     </td>
@@ -92,7 +94,7 @@
                         <tbody>
                             <tr>
                                 <td colspan="6">
-                                    <h1 class="fs-1 text-center text2">No Users To Approve</h1>
+                                    <h1 class="fs-1 text-center text2">No Posts To Approve</h1>
                                 <td>
                             </tr>
                         </tbody>

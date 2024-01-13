@@ -126,7 +126,7 @@
                 <div class="modal-body">
                     <div class="row ">
                         <div class="col-12 py-3 d-flex justify-content-center">
-                            <img src="{{ asset('images/emptyUser.jpg') }}" class="img-thumbnail" style="height: 300px"
+                            <img id="userImg" src="{{ asset('images/emptyUser.jpg') }}" class="img-thumbnail" style="height: 300px"
                                 alt="">
                         </div>
                         <div class="col-12 px-lg-4">

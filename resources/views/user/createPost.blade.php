@@ -14,7 +14,11 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+
+
+        </div>
+        <div class="container">
+            <div class="container p-0">
                 <div class="col-12">
                     <div class="row">
                         <div class="col-12 py-3 d-flex flex justify-content-center">
@@ -27,17 +31,17 @@
                             <label class="btn btn-primary fs-5 mt-3" for="profileimg" onclick="changeImage();"><i class="bi bi-cloud-arrow-up-fill"></i>&nbsp; Upload Image</label>
                          </div>
                         <div class="col-12">
-                            <div class="form-group">
+                            <div class="form-group pt-3">
                                 <span class="h3 text2">Title</span>
                                 <input type="text" id="title" class="input form-control py-2" >
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group pt-3">
                                 <span class="h3 text2">Description</span>
                                 <textarea class="form-control  input" id="description" rows="20" name="content" ></textarea>
                             </div>
-                            <div class="form-group">
-                                <button onclick="publishPost();" class="btn btn-primary w-100">Publish</button>
+                            <div class="form-group pt-3">
+                                <button onclick="publishPost();" class="btn btn-primary w-100 fs-5">Publish</button>
                             </div>
                         </div>
                     </div>
@@ -46,7 +50,6 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

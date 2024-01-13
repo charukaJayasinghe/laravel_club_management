@@ -1,15 +1,23 @@
 <?php
 
+use App\Http\Controllers\AdminBoardController;
+use App\Http\Controllers\AdminEventController;
+use App\Http\Controllers\AdminNewsController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\editController;
+use App\Http\Controllers\FogotPasswordController;
 use App\Http\Controllers\guestController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\manageUsersController;
 use App\Http\Controllers\signinController;
 use App\Http\Controllers\signoutController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserCommentController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserHomeController;
+use App\Http\Controllers\UserNewsController;
 use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +38,16 @@ Route::post('/adminLogin',[signinController::class,'login']);
 Route::post('/userLoginProcess',[UserHomeController::class,'loginprocess']);
 Route::post('/userSignup',[UserHomeController::class,'signupProcess']);
 Route::get('/',[guestController::class,'index'])->name('home');
+Route::post('/guestSubscribe',[guestController::class,'subscribe']);
+Route::get('/testEmail',[TestController::class,'test']);
+Route::post('/sendtestEmailProcess',[TestController::class,'sendEmail']);
+Route::get('/fogotPassword',[FogotPasswordController::class,'index'])->name("fogotPassword");
+Route::post('/sendEmailProcess',[FogotPasswordController::class,'sendEmail']);
+Route::get('/enterVerifyCode',[FogotPasswordController::class,'verify']);
+Route::get('/updatePassword',[FogotPasswordController::class,'viewUpdatePassword']);
+Route::post('/verifyProcess',[FogotPasswordController::class,'verifyProcess']);
+Route::post('/updatePasswordProcess',[FogotPasswordController::class,'updatePasswordProcess']);
+Route::get('/guestViewNews',[guestController::class,'viewNews'])->name('guestViewNews');
 
 Route::middleware('user')->group(function () {
     Route::get("/userDashboard",[UserDashboardController::class,'viewHome'])->name('viewHome');
@@ -37,6 +55,12 @@ Route::middleware('user')->group(function () {
     Route::post("/createPostProcess",[UserPostController::class,'makePost']);
     Route::post('/user/sigout',[signoutController::class,'signout']);
     Route::get('/viewMyPosts',[UserPostController::class,'viewMyPosts'])->name('viewMyPosts');
+    Route::get('/postView',[UserPostController::class,'singlePostView'])->name('singlePostView');
+    Route::get('/newsView',[UserNewsController::class,'singleNewsView'])->name('singleNewsView');
+    Route::post('/user/postCommentProcess',[UserCommentController::class,'postComment']);
+    Route::get('/userProfile',[UserProfileController::class,'view'])->name('userProfile');
+    Route::post('/updateProfileProcess',[UserProfileController::class,'update']);
+    Route::post('/user/postNewsCommentProcess',[UserNewsController::class,'postNewsComment']);
 });
 Route::middleware('admin')->group(function () {
     Route::post("/dashboard/approveUserProcess",[manageUsersController::class,'approveUserProcess']);
@@ -54,6 +78,28 @@ Route::middleware('admin')->group(function () {
     Route::get('/dashboard/approvePosts',[AdminPostController::class,'approve'])->name('adminApprovePost');
     Route::post('/dashboard/viewPost',[AdminPostController::class,'viewPost']);
     Route::post('/dashboard/approvePostProcess',[AdminPostController::class,'approvePost']);
+    Route::post('/dashboard/deletePostProcess',[AdminPostController::class,'deletePost']);
+    Route::get('/admin/viewPostManage',[AdminPostController::class,'viewManagePost'])->name("adminManagePost");
+    Route::get('/admin/viewCreateEvent',[AdminEventController::class,'index'])->name("adminViewCreateEvent");
+    Route::post('/admin/createEventProcess',[AdminEventController::class,'create']);
+    Route::get('/admin/adminViewManageEvent',[AdminEventController::class,'viewManage'])->name("adminViewManageEvent");
+    Route::post('/admin/deleteEvent',[AdminEventController::class,'deleteEvent']);
+    Route::get('/admin/viewCreateNews',[AdminNewsController::class,'index'])->name("viewCreateNews");
+    Route::post('/admin/createNewsProcess',[AdminNewsController::class,'createNews']);
+    Route::get('/admin/viewManageNews',[AdminNewsController::class,'manageNews'])->name('adminManageNews');
+    Route::post('/dashboard/viewNews',[AdminNewsController::class,'viewNews']);
+    Route::post('/dashboard/deleteNewsProcess',[AdminNewsController::class,'deleteNews']);
+    Route::get('/dashboard/viewManageBoard',[AdminBoardController::class,'viewManageBoard'])->name('viewManageBoard');
+    Route::get('/dashboard/viewManagePosition',[AdminBoardController::class,'viewManagePosition'])->name('viewManagePosition');
+    Route::post('/dashBoard/addPosition',[AdminBoardController::class,'addPosition']);
+    Route::post('/dashboard/removePosition',[AdminBoardController::class,'removePosition']);
+    Route::get('/dashboard/viewAddBoardMember',[AdminBoardController::class,'viewAddBoardMember'])->name('viewAddMember');
+    Route::post('/addBoardMemberProcess',[AdminBoardController::class,'addBoardMemberProcess']);
+    Route::post('/dashboard/viewMemberDetails',[AdminBoardController::class,'getMemberDetails']);
+    Route::post('/updateMemberDetails',[AdminBoardController::class,'updateMemberDetails']);
+    Route::post('/deleteMember',[AdminBoardController::class,'deleteMember']);
+    Route::post('/updatePosition',[AdminBoardController::class,'updatePosition']);
+    Route::post('/updatePositionProcess',[AdminBoardController::class,'updatePositionProcess']);
 });
 
 
